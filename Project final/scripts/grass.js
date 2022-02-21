@@ -1,4 +1,6 @@
-class Grass extends LivingCreature{
+let LivingCreature = require('./LivingCreature')
+
+module.exports= class Grass extends LivingCreature{
     constructor(x,y,index, multiply){   
       super(x,y,index, multiply);
     }
@@ -8,13 +10,13 @@ class Grass extends LivingCreature{
     mul(){
       this.multiply++;
       if(this.multiply == 10){
-        var emptyCord = this.getDirections(0);
-        var cord = random(emptyCord);
-       console.log(cord);
+        let emptyCord = super.getDirections(0);
+        let cord = emptyCord[Math.floor(Math.random() * emptyCord.length)]
+            console.log(cord, 'GRASSSSS');
        
-        if(cord){
-          var x = cord[0];
-          var y = cord[1];
+        if(this.multiply >= 5 && cord){
+          let x = cord[0];
+          let y = cord[1];
   
           var newGrass = new Grass(x,y,this.index);
           grassArr.push(newGrass);

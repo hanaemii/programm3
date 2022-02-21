@@ -1,4 +1,6 @@
-class Bomb extends LivingCreature{
+let LivingCreature = require('./LivingCreature')
+
+module.exports= class Bomb extends LivingCreature{
     constructor(x,y,index,multiply){   
       super(x,y,index,multiply);  
     }
@@ -6,8 +8,8 @@ class Bomb extends LivingCreature{
     
   
     bombarda(){   
-      this.newDirections();
-      var animal2Cord = this.getDirections(3);
+      super.newDirections();
+      var animal2Cord = super.getDirections(3);
   
       if(animal2Cord.length !== 0){
         for(var i in this.directions){

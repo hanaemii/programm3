@@ -1,4 +1,6 @@
-class Animal2 extends LivingCreature{
+let LivingCreature= require('./LivingCreature')
+
+module.exports= class Animal2 extends LivingCreature{
     constructor(x,y,index,multiply){
       super(x,y,index,multiply);
       this.energy= 15;   
@@ -6,8 +8,8 @@ class Animal2 extends LivingCreature{
   
    
     move(){
-      var emptyCord = this.getDirections(0);
-      var cord = random(emptyCord);
+      var emptyCord = super.getDirections(0);
+      var cord = emptyCord[Math.floor(Math.random() * emptyCord.length)];
       
       if(cord){
         this.energy--;
@@ -27,8 +29,8 @@ class Animal2 extends LivingCreature{
     }
     
     eat(){
-      var animalCord = this.getDirections(2);
-      var animal= random(animalCord);
+      var animalCord = super.getDirections(2);
+      var animal= animalCord[Math.floor(Math.random() * animalCord.length)];
   
       if(animal){
         this.multiply ++;
@@ -67,8 +69,8 @@ class Animal2 extends LivingCreature{
       }
   
       mul(){
-        var emptyCord = this.getDirections(2);
-        var cord = random(emptyCord);
+        var emptyCord = super.getDirections(2);
+        var cord = emptyCord[Math.floor(Math.random() * emptyCord.length)];
   
         if(cord){
           var x = cord[0];
