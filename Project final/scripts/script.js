@@ -1,72 +1,23 @@
-var grassArr = [];
+
 var grassCount = 0;
 var grassIndex = 0;
-var animalArr = [];
+
 var animalCount = 0;
 var animalIndex = 0;
-var animalArr2=[];
+
 var animalCount2 = 0;
 var animalIndex2 = 0;
-var bombArr=[];
+
 var bombCount=0;
 var bombIndex=0;
 
 var x = 20;
 var y = 20;
 var side = 20;
+var n=100;
+var socket=io();
+side=30
 
-var matrix = [];
-  for(i = 0; i < y; i++){
-   matrix[i]=[];
-    for(j = 0; j < x; j++){
-     matrix[i][j]=0;
-   }
- }
-
-var grassCount= x*y*50/100;
-    for (var i=0; i<grassCount; i++){
-      var xx=Math.floor(Math.random()*x);
-      var yy=Math.floor(Math.random()*y);
-        if(matrix[yy][xx] ==0){
-          matrix[yy][xx] =1;
-         }
-        else {
-          i--;
-         }
-    } 
- var animalCount= x*y*20/100;
-    for (var i=0; i<animalCount; i++){
-      var xx=Math.floor(Math.random()*x);
-      var yy=Math.floor(Math.random()*y);
-        if(matrix[yy][xx] ==0){
-          matrix[yy][xx] =2;
-         }
-        else {
-          i--;
-         }
-    } 
-var animalCount2= x*y*2/100;
-    for (var i=0; i<animalCount2; i++){
-      var xx=Math.floor(Math.random()*x);
-      var yy=Math.floor(Math.random()*y);
-        if(matrix[yy][xx] ==0){
-          matrix[yy][xx] =3;
-         }
-        else {
-          i--;
-         }
-    } 
-var bombCount= x*y*1/100;
-    for (var i=0; i<bombCount; i++){
-      var xx=Math.floor(Math.random()*x);
-      var yy=Math.floor(Math.random()*y);
-        if(matrix[yy][xx] ==0){
-          matrix[yy][xx] =4;
-         }
-        else {
-          i--;
-         }
-    } 
 
 function setup(){
   createCanvas(x * side, y * side);
@@ -99,7 +50,7 @@ function setup(){
   }    
 }
 
-function draw() 
+function nkarel() 
 {
   background("#d8d8d8");  
 
@@ -146,9 +97,30 @@ function draw()
 }  
 }
 
+function nkarel(matrix) {
+  console.log(matrix);
 
+  for (var y = 0; y < matrix.length; y++) {
+    for (var x = 0; x < matrix[y].length; x++) {
+        var obj = matrix[y][x];
+        if (obj == 1) {
+            fill("green");
+            rect(x * side, y * side, side, side)
+        }
+        else if (obj == 2) {
+            fill("yellow");
+            rect(x * side, y * side, side, side);
+        }
+    }
+}
 
+}
 
+setInterval(
+  function () {
+  socket.on('send matrix', nkarel)
+  },1000
+)
 
 
 
