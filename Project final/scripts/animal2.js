@@ -1,18 +1,20 @@
 let LivingCreature= require('./LivingCreature')
 
 module.exports= class Animal2 extends LivingCreature{
-    constructor(x,y,index,multiply){
-      super(x,y,index,multiply);
-      this.energy= 15;   
+    constructor(x,y){
+      super(x,y);
+      this.energy = 15;   
     }
   
    
     move(){
+      this.energy--;
       var emptyCord = super.getDirections(0);
       var cord = emptyCord[Math.floor(Math.random() * emptyCord.length)];
       
       if(cord){
-        this.energy--;
+       
+        console.log(this.energy);
         var x = cord[0];
         var y = cord[1];
         
@@ -22,7 +24,7 @@ module.exports= class Animal2 extends LivingCreature{
   
         this.x = x;
         this.y = y;     
-        if (this.energy==0){
+        if (this.energy<=0){
           this.die();
         }
       }      

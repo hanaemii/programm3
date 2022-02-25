@@ -1,8 +1,8 @@
-let LivingCreature = require('./LivingCreature')
+/*let LivingCreature = require('./LivingCreature')
 
 module.exports= class Bomb extends LivingCreature{
-    constructor(x,y,index,multiply){   
-      super(x,y,index,multiply);  
+    constructor(x,y){   
+      super(x,y);  
     }
   
     
@@ -51,4 +51,4 @@ module.exports= class Bomb extends LivingCreature{
     }
   }
   
-  
+  */
