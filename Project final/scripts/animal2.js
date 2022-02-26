@@ -35,7 +35,7 @@ module.exports= class Animal2 extends LivingCreature{
       var animal= animalCord[Math.floor(Math.random() * animalCord.length)];
   
       if(animal){
-        this.multiply ++;
+        this.multiply++;
         var x = animal[0];
         var y = animal[1];
   
@@ -71,7 +71,7 @@ module.exports= class Animal2 extends LivingCreature{
       }
   
       mul(){
-        var emptyCord = super.getDirections(2);
+        var emptyCord = super.getDirections(0);
         var cord = emptyCord[Math.floor(Math.random() * emptyCord.length)];
   
         if(cord){
