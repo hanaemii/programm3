@@ -4,8 +4,8 @@ var socket = io();
 
 function setup() {
   createCanvas(20 * side, 20 * side);
-  background('#d8d8d8');
-  frameRate(2);
+  // background('#d8d8d8');
+  // frameRate(30);
 
 }
 
@@ -24,7 +24,7 @@ function nkarel(matrix) {
         fill("red");
       }
       else if (matrix[i][j] == 0) {
-        fill("black");
+        fill("gray");
       }
       rect(j * side, i * side, side, side);
 
@@ -38,7 +38,18 @@ function nkarel(matrix) {
     socket.on('send matrix', nkarel)
 
 
-
+    function kill() {
+      socket.emit("kill")
+  }
+  function addGrass() {
+      socket.emit("add grass")
+  }
+  function addAnimal() {
+      socket.emit("add animal")
+  }
+  function addAnimal2() {
+    socket.emit("add animal2")
+}
 
 
 

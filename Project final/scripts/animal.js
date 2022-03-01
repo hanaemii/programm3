@@ -3,7 +3,7 @@ let LivingCreature = require('./LivingCreature')
 module.exports = class Animal extends LivingCreature {
   constructor(x, y) {
     super(x, y);
-    this.energy = 10;
+    this.energy = 8;
   }
 
 
@@ -33,7 +33,7 @@ module.exports = class Animal extends LivingCreature {
   }
 
   eat() {
-    var animalCord = super.getDirections(2);
+    var animalCord = super.getDirections(1);
     var animal = animalCord[Math.floor(Math.random() * animalCord.length)];
 
     if (animal) {
@@ -44,12 +44,20 @@ module.exports = class Animal extends LivingCreature {
       matrix[y][x] = matrix[this.y][this.x];
       matrix[this.y][this.x] = 0;
 
+      for (var i in grassArr) {
+				if (grassArr[i].x == x && grassArr[i].y == y) {
+					grassArr.splice(i, 1);
+          break;
+				}
+			}
+
       this.x = x;
       this.y = y;
-      this.energy++;
+      this.energy+=2;
 
       if (this.energy >= 12) {
         this.mul();
+        this.energy=8
 
       }
 
@@ -66,21 +74,26 @@ module.exports = class Animal extends LivingCreature {
     var emptyCord = super.getDirections(0);
     var cord = emptyCord[Math.floor(Math.random() * emptyCord.length)];
 
-    if (cord) {
+    if (this.energy>=8 && cord) {
       var x = cord[0];
       var y = cord[1];
 
-      var newAnimal = new Animal(x, y, this.index);
+      var newAnimal = new Animal(x, y, 2);
       animalArr.push(newAnimal);
-      this.energy = 6;
+      this.energy = 3;
 
     }
   }
     die() {
-    matrix[this.y][this.x] = 0;
-    for (var i in animalArr) {
-      if (animalArr[i].x == this.x && animalArr[i].y == this.y) {
-        animalArr.splice(i, 1);
+     matrix[this.y][this.x] = 0;
+    // for (var i in animalArr) {
+		// 	if (animalArr[i].x == this.x && animalArr[i].y == this.y) {
+		// 		animalArr.splice(i, 1)
+		// 	}
+		// }
+    for (var i in grassArr) {
+      if (grassArr[i].x == this.x && grassArr[i].y == this.y) {
+        grassArr.splice(i, 1)
       }
     }
   }
