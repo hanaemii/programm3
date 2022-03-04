@@ -30,10 +30,10 @@ function rand(min, max) {
 
   io.sockets.emit('send matrix', matrix)
 
-
-grassArr = [];
-animalArr = [];
-animalArr2=[];
+  grassArr = [];
+  animalArr = [];
+  animalArr2 = [];
+  
 //bombArr=[];
 
  
@@ -70,10 +70,11 @@ animalArr2=[];
 
     return matrix;
 }
-matrix = generator(15,5,5,5)
-const Grass= require("./Grass")
-const Animal=require("./Animal")
-const Animal2=require("./Animal2")
+matrix = generator(15,12,1,2)
+
+const Grass = require("./Grass")
+const Animal = require("./Animal")
+const Animal2 = require("./Animal2")
   //Bomb=require("./Bomb")
 
 function createObject(matrix) {
@@ -131,10 +132,7 @@ function createObject(matrix) {
         createObject(matrix)
     })
 
-    grassArr = [];
-    animalArr = [];
-    animalArr2 = [];
-    
+
 
 
     function kill() {
@@ -148,12 +146,13 @@ function createObject(matrix) {
   }
   
   
-  function addGrass() { for (let i = 0; i < gr; i++) {
+  function addGrass() { 
+    for (let i = 0; i < gr; i++) {
     let x = Math.floor(Math.random() * 15);
     let y = Math.floor(Math.random() * 15);
     if (matrix[x][y] == 0) {
         matrix[x][y] = 1;
-        grassArr.push(new Grass(x, y);
+        grassArr.push(new Grass(x, y))
     }
 }
 
